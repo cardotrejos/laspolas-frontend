@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-import Head from 'next/head';
-import styled from 'styled-components';
-import DisplayError from './ErrorMessage';
-import Image from 'next/image';
+import PropTypes from "prop-types";
+import { useQuery } from "@apollo/client";
+import gql from "graphql-tag";
+import Head from "next/head";
+import styled from "styled-components";
+import DisplayError from "./ErrorMessage";
+import Image from "next/image";
 
 const BrandStyles = styled.div`
   display: grid;
@@ -15,9 +15,25 @@ const BrandStyles = styled.div`
   align-items: top;
   gap: 2rem;
   img {
-    width: 100%;
+    width: 10%;
     object-fit: contain;
   }
+  p {
+    font-size: 1.3rem;
+    font-weight: normal;
+    line-height: 1.5;
+    margin: 0;
+    background: #B68D40;
+    font-family: "Roboto", sans-serif;
+  }
+`;
+
+const BeerListStyles = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 2%;
+  place-items: center;
+  height: 50vh;
 `;
 
 const SINGLE_ITEM_QUERY = gql`
@@ -61,20 +77,23 @@ export default function SingleBrand({ id }) {
   return (
     <BrandStyles>
       <Head>
-        <title>Catálogo café | {brand.name}</title>
+        <title>Las Polas | {brand.name}</title>
       </Head>
-      <Image
-        src={brand.photo.image.publicUrlTransformed}
-        alt={brand.photo.altText}
-        width={100}
-        height={100}
-      />
-      <div className="details">
+
+      <div>
         <h2>{brand.name}</h2>
+        <Image
+          src={brand.photo.image.publicUrlTransformed}
+          alt={brand.photo.altText}
+          width={100}
+          height={100}
+        />
         <p>{brand.description}</p>
         <p>Ciudad: {brand.city}</p>
         <p>Instagram: {brand.instagram}</p>
       </div>
+      <BeerListStyles>
+        <h3>Cervezas</h3>
       {brand?.beers.map((beer) => (
         <div key={beer.id}>
           <Image
@@ -84,8 +103,9 @@ export default function SingleBrand({ id }) {
             height={100}
           />
           <p>{beer.name}</p>
-        </div> 
+        </div>
       ))}
+      </BeerListStyles>
     </BrandStyles>
   );
 }

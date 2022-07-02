@@ -3,15 +3,12 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { perPage } from '../config';
-import Brand from './Brand';
+import Beer from './Beer';
 
-export const ALL_BRANDS_QUERY = gql`
-  query ALL_BRANDS_QUERY($skip: Int = 0) {
-    brands(skip: $skip) {
-      id
+export const ALL_BEERS_QUERY = gql`
+  query ALL_BEERS_QUERY($skip: Int = 0) {
+    beers(skip: $skip) {
       name
-      city
-      description
       photo {
         id
         image {
@@ -22,7 +19,7 @@ export const ALL_BRANDS_QUERY = gql`
   }
 `;
 
-const BrandsListStyles = styled.div`
+const BeersListStyles = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 2%;
@@ -30,8 +27,8 @@ const BrandsListStyles = styled.div`
   height: 50vh;
 `;
 
-function Brands({ page }) {
-  const { data, error, loading } = useQuery(ALL_BRANDS_QUERY, {
+function Beers({ page }) {
+  const { data, error, loading } = useQuery(ALL_BEERS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
       first: perPage,
@@ -42,17 +39,17 @@ function Brands({ page }) {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <div>
-      <BrandsListStyles>
-        {data.brands.map((brand) => (
-          <Brand key={brand.id} brand={brand} />
+      <BeersListStyles>
+        {data.beers.map((beer) => (
+          <Beer key={beer.id} brand={beer} />
         ))}
-      </BrandsListStyles>
+      </BeersListStyles>
     </div>
   );
 }
 
-Brands.propTypes = {
+Beers.propTypes = {
   page: PropTypes.number.isRequired,
 };
 
-export default Brands;
+export default Beers;
