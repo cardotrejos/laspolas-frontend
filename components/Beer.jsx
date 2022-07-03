@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import ItemStyles from './styles/ItemStyles';
+import BeerItemStyles from './styles/BeerItemStyles';
 import Title from './styles/Title';
 
 function Beer({ beer }) {
   return (
-    <ItemStyles>
-      <Image src={beer?.photo?.image?.publicUrlTransformed} alt={beer.name} width={200}
+    <BeerItemStyles>
+      <Image src={beer?.photo?.image?.publicUrlTransformed} alt={beer?.name} width={100}
     height={200} />
       <Title>
-        <Link href={`/cerveceria/${beer.id}`}>{beer.name}</Link>
+        <Link href={`/cerveza/${beer?.id}`}>{beer?.name}</Link>
       </Title>
-    </ItemStyles>
+    </BeerItemStyles>
   );
 }
 

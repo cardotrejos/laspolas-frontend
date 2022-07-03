@@ -5,6 +5,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import DisplayError from "./ErrorMessage";
 import Image from "next/image";
+import Link from "next/link";
 
 const BrandStyles = styled.div`
   display: grid;
@@ -18,22 +19,44 @@ const BrandStyles = styled.div`
     width: 10%;
     object-fit: contain;
   }
-  p {
+  h3 {
+    font-size: 3rem;
+    line-height: 1.5;
+    font-family: "radnika_next", sans-serif;
+    background: #b68d40;
+    color: white;
+    box-shadow: var(--bs);
+    text-align: center;
+  }
+  article {
     font-size: 1.3rem;
     font-weight: normal;
     line-height: 1.5;
-    margin: 0;
-    background: #B68D40;
     font-family: "Roboto", sans-serif;
+  }
+  h4 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .beer-container {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 
 const BeerListStyles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 2%;
-  place-items: center;
-  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 `;
 
 const SINGLE_ITEM_QUERY = gql`
@@ -88,23 +111,28 @@ export default function SingleBrand({ id }) {
           width={100}
           height={100}
         />
-        <p>{brand.description}</p>
+        <article>{brand.description}</article>
         <p>Ciudad: {brand.city}</p>
         <p>Instagram: {brand.instagram}</p>
       </div>
+
       <BeerListStyles>
         <h3>Cervezas</h3>
-      {brand?.beers.map((beer) => (
-        <div key={beer.id}>
-          <Image
-            src={beer.photo.image.publicUrlTransformed}
-            alt={beer.photo.altText}
-            width={100}
-            height={100}
-          />
-          <p>{beer.name}</p>
+        <div className="container">
+          {brand?.beers.map((beer) => (
+            <Link href={`/cerveza/${beer?.id}`} key={beer.id}>
+              <div key={beer.id} className="beer-container">
+                <Image
+                  src={beer.photo.image.publicUrlTransformed}
+                  alt={beer.photo.altText}
+                  width={150}
+                  height={150}
+                />
+                <h4>{beer.name}</h4>
+              </div>
+            </Link>
+          ))}
         </div>
-      ))}
       </BeerListStyles>
     </BrandStyles>
   );

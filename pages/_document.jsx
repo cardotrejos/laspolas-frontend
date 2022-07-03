@@ -1,3 +1,4 @@
+import { createGetInitialProps } from '@mantine/next';
 import Document, { Html, Head, NextScript, Main } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 

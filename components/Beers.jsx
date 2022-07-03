@@ -8,6 +8,7 @@ import Beer from './Beer';
 export const ALL_BEERS_QUERY = gql`
   query ALL_BEERS_QUERY($skip: Int = 0) {
     beers(skip: $skip) {
+      id
       name
       photo {
         id
@@ -20,11 +21,14 @@ export const ALL_BEERS_QUERY = gql`
 `;
 
 const BeersListStyles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 2%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
   place-items: center;
-  height: 50vh;
+  height: 80vh;
 `;
 
 function Beers({ page }) {
@@ -41,7 +45,7 @@ function Beers({ page }) {
     <div>
       <BeersListStyles>
         {data.beers.map((beer) => (
-          <Beer key={beer.id} brand={beer} />
+          <Beer key={beer.id} beer={beer} />
         ))}
       </BeersListStyles>
     </div>
