@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
-import Head from 'next/head';
-import styled from 'styled-components';
-import DisplayError from './ErrorMessage';
-import Image from 'next/image';
+import PropTypes from "prop-types";
+import { useQuery } from "@apollo/client";
+import gql from "graphql-tag";
+import Head from "next/head";
+import styled from "styled-components";
+import DisplayError from "./ErrorMessage";
+import Image from "next/image";
+import Link from "next/link";
 
 const BrandStyles = styled.div`
   display: grid;
@@ -15,8 +16,46 @@ const BrandStyles = styled.div`
   align-items: top;
   gap: 2rem;
   img {
-    width: 100%;
+    width: 10%;
     object-fit: contain;
+  }
+  h3 {
+    font-size: 3rem;
+    line-height: 1.5;
+    font-family: "radnika_next", sans-serif;
+    background: #b68d40;
+    color: white;
+    box-shadow: var(--bs);
+    text-align: center;
+  }
+  article {
+    font-size: 1.3rem;
+    font-weight: normal;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+  }
+  h4 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .beer-container {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+`;
+
+const BeerListStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
   }
 `;
 
@@ -61,31 +100,40 @@ export default function SingleBrand({ id }) {
   return (
     <BrandStyles>
       <Head>
-        <title>Catálogo café | {brand.name}</title>
+        <title>Las Polas | {brand.name}</title>
       </Head>
-      <Image
-        src={brand.photo.image.publicUrlTransformed}
-        alt={brand.photo.altText}
-        width={100}
-        height={100}
-      />
-      <div className="details">
+
+      <div>
         <h2>{brand.name}</h2>
-        <p>{brand.description}</p>
+        <Image
+          src={brand.photo.image.publicUrlTransformed}
+          alt={brand.photo.altText}
+          width={100}
+          height={100}
+        />
+        <article>{brand.description}</article>
         <p>Ciudad: {brand.city}</p>
         <p>Instagram: {brand.instagram}</p>
       </div>
-      {brand?.beers.map((beer) => (
-        <div key={beer.id}>
-          <Image
-            src={beer.photo.image.publicUrlTransformed}
-            alt={beer.photo.altText}
-            width={100}
-            height={100}
-          />
-          <p>{beer.name}</p>
-        </div> 
-      ))}
+
+      <BeerListStyles>
+        <h3>Cervezas</h3>
+        <div className="container">
+          {brand?.beers.map((beer) => (
+            <Link href={`/cerveza/${beer?.id}`} key={beer.id}>
+              <div key={beer.id} className="beer-container">
+                <Image
+                  src={beer.photo.image.publicUrlTransformed}
+                  alt={beer.photo.altText}
+                  width={150}
+                  height={150}
+                />
+                <h4>{beer.name}</h4>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </BeerListStyles>
     </BrandStyles>
   );
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ItemStyles = styled.div`
+const BeerItemStyles = styled.div`
   background: white;
   border: 1px solid var(--offWhite);
   box-shadow: var(--bs);
@@ -9,7 +9,9 @@ const ItemStyles = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 36vh;
+  height: 30vh;
+  margin: 1rem 2rem; 
+  width: 20rem;
   img {
     width: 100%;
     height: 100%;
@@ -37,4 +39,4 @@ const ItemStyles = styled.div`
   }
 `;
 
-export default ItemStyles;
+export default BeerItemStyles;
