@@ -7,7 +7,7 @@ import Brand from './Brand';
 
 export const ALL_BRANDS_QUERY = gql`
   query ALL_BRANDS_QUERY($skip: Int = 0) {
-    brands(skip: $skip) {
+    brands(skip: $skip, first: $perPage) {
       id
       name
       city

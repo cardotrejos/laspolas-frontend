@@ -7,7 +7,7 @@ import Beer from './Beer';
 
 export const ALL_BEERS_QUERY = gql`
   query ALL_BEERS_QUERY($skip: Int = 0) {
-    beers(skip: $skip) {
+    beers(skip: $skip, first: $perPage) {
       id
       name
       photo {
