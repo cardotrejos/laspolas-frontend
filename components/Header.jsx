@@ -8,9 +8,11 @@ const Logo = styled.h1`
   font-size: 4rem;
   margin-left: 2rem;
   position: relative;
-  z-index: 2;
   background: #B68D40;
   padding: 0.25rem 2rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  margin: 2rem 5rem;
   a {
     color: white;
     text-decoration: none;
@@ -19,26 +21,23 @@ const Logo = styled.h1`
   }
 `;
 
-const HeaderStyles = styled.header`
-  .bar {
+const HeaderStyles = styled.div`
     border-bottom: 10px solid var(--black, black);
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
     justify-content: space-between;
-    align-items: stretch;
-  }
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
 `;
 
 export default function Header() {
   return (
     <HeaderStyles>
-      <div className="bar">
         <Logo>
           <Link href="/">Las polas</Link>
           <BeerLogo src="../public/beer.svg" width={50} height={50} alt="beer-logo" />
         </Logo>
         <Nav />
-      </div>
     </HeaderStyles>
   );
 }

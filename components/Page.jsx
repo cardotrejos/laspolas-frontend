@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     --lightGrey: #e1e1e1;
     --lightGray: var(--lightGrey);
     --offWhite: #ededed;
-    --maxWidth: 1200px;
+    --maxWidth: 1900px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
     box-sizing: border-box;
     font-size: 10px;
@@ -31,6 +31,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: 1.5rem;
     line-height:2;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   a {
     text-decoration: none;
@@ -45,9 +49,16 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const InnerStyles = styled.div`
-  max-width: var(--maxWidth);
+  display: flex;
   margin: 0 auto;
   padding: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media (max-width: 700px) {
+    padding: 1rem;
+  }
 `;
 
 export default function Page({ children }) {

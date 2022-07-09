@@ -4,12 +4,16 @@ const ItemStyles = styled.div`
   background: white;
   border: 1px solid var(--offWhite);
   box-shadow: var(--bs);
-  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 36vh;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
   img {
     width: 100%;
     height: 100%;
