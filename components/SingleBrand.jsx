@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import Head from "next/head";
 import styled from "styled-components";
 import DisplayError from "./ErrorMessage";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 
 const BrandStyles = styled.div`
@@ -110,7 +110,10 @@ export default function SingleBrand({ id }) {
           alt={brand.photo.altText}
           width={100}
           height={100}
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <article>{brand.description}</article>
         <p>Ciudad: {brand.city}</p>
         <p>Instagram: {brand.instagram}</p>
@@ -127,7 +130,10 @@ export default function SingleBrand({ id }) {
                   alt={beer.photo.altText}
                   width={150}
                   height={150}
-                />
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
                 <h4>{beer.name}</h4>
               </div>
             </Link>

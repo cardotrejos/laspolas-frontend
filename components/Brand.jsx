@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import ItemStyles from './styles/ItemStyles';
@@ -15,8 +15,15 @@ function Brand({ brand }) {
 
   return (
     <ItemStyles>
-      <Image src={brand?.photo?.image?.publicUrlTransformed} alt={brand.name} width={400}
-    height={400} />
+      <Image
+        src={brand?.photo?.image?.publicUrlTransformed}
+        alt={brand.name}
+        width={400}
+        height={400}
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
       <Title>
         <Link href={`/cerveceria/${brand.id}`} legacyBehavior>{brand.name}</Link>
       </Title>

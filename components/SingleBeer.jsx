@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import Head from "next/head";
 import styled from "styled-components";
 import DisplayError from "./ErrorMessage";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const BrandStyles = styled.div`
   display: grid;
@@ -63,7 +63,10 @@ export default function SingleBeer({ id }) {
           alt={beer.photo.altText}
           width={100}
           height={100}
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p>{beer.description}</p>
         <p>ABV (% Alcohol): {beer.abv}</p>
         <p>IBU (Amargo): {beer.ibu}</p>
