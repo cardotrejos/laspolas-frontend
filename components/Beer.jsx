@@ -10,7 +10,7 @@ function Beer({ beer }) {
       <Image src={beer?.photo?.image?.publicUrlTransformed} alt={beer?.name} width={100}
     height={200} />
       <Title>
-        <Link href={`/cerveza/${beer?.id}`}>{beer?.name}</Link>
+        <Link href={`/cerveza/${beer?.id}`} legacyBehavior>{beer?.name}</Link>
       </Title>
     </BeerItemStyles>
   );

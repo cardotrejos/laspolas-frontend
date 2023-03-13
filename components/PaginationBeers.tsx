@@ -24,15 +24,15 @@ export default function Pagination({ page }: { page: number }) {
       <Head>
         <title>Las Polas</title>
       </Head>
-      <Link href={`/cervezas/${page - 1}`}>
-        <a aria-disabled={page <= 1}>← Anterior</a>
+      <Link href={`/cervezas/${page - 1}`} aria-disabled={page <= 1}>
+        ← Anterior
       </Link>
       <p>
         Página {page} de {pageCount}
       </p>
       <p>Total cervezas: {beersCount} </p>
-      <Link href={`/cervezas/${page + 1}`}>
-        <a aria-disabled={page >= pageCount}>Siguiente →</a>
+      <Link href={`/cervezas/${page + 1}`} aria-disabled={page >= pageCount}>
+        Siguiente →
       </Link>
     </PaginationStyles>
   );

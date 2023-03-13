@@ -18,7 +18,7 @@ function Brand({ brand }) {
       <Image src={brand?.photo?.image?.publicUrlTransformed} alt={brand.name} width={400}
     height={400} />
       <Title>
-        <Link href={`/cerveceria/${brand.id}`}>{brand.name}</Link>
+        <Link href={`/cerveceria/${brand.id}`} legacyBehavior>{brand.name}</Link>
       </Title>
       <p>{brand.city}</p>
     </ItemStyles>

@@ -120,7 +120,7 @@ export default function SingleBrand({ id }) {
         <h3>Cervezas</h3>
         <div className="container">
           {brand?.beers.map((beer) => (
-            <Link href={`/cerveza/${beer?.id}`} key={beer.id}>
+            <Link href={`/cerveza/${beer?.id}`} key={beer.id} legacyBehavior>
               <div key={beer.id} className="beer-container">
                 <Image
                   src={beer.photo.image.publicUrlTransformed}
