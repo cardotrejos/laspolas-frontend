@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import Head from "next/head";
 import styled from "styled-components";
 import DisplayError from "./ErrorMessage";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const BrandStyles = styled.div`
   display: grid;
