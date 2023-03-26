@@ -15,7 +15,7 @@ const BrandStyles = styled.div`
   align-items: top;
   gap: 2rem;
   img {
-    width: 90%;
+    width: 80%;
     object-fit: contain;
   }
   h3 {
@@ -38,6 +38,12 @@ const BrandStyles = styled.div`
     text-align: center;
   }
   .beer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 30%;
     cursor: pointer;
     &:hover {
       transform: scale(1.1);
