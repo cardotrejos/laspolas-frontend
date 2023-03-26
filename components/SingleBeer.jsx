@@ -18,6 +18,14 @@ const BrandStyles = styled.div`
     height: 100%;
     object-fit: contain;
   }
+  .beer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 30%;
+  }
 `;
 
 const SINGLE_ITEM_QUERY = gql`
@@ -58,12 +66,12 @@ export default function SingleBeer({ id }) {
 
       <div>
         <h2>{beer.name}</h2>
-        <div style={{ width: "50%", height: "20%" }}>
+        <div className="beer-container">
           <Image
             src={beer.photo.image.publicUrlTransformed}
             alt={beer.photo.altText}
-            width={100}
-            height={100}
+            width={500}
+            height={500}
           />
         </div>
         <p>{beer.description}</p>
