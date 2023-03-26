@@ -15,7 +15,7 @@ const BrandStyles = styled.div`
   align-items: top;
   gap: 2rem;
   img {
-    width: 15%;
+    width: 30%;
     height: auto;
     object-fit: contain;
   }
@@ -69,8 +69,16 @@ export default function SingleBeer({ id }) {
         </div>
         <p>{beer.description}</p>
         <p>ABV (% Alcohol): {beer.abv}</p>
-        <p>IBU (Amargo): {beer.ibu}</p>
-        <p>SRM (Color): {beer.srm}</p>
+        {
+          beer.ibu !== null && (
+            <p>IBU (Amargo): {beer.ibu}</p>
+          )
+        }
+        {
+          beer.srm !== null && (
+            <p>SRM (Color): {beer.srm}</p>
+          )
+        }
         {beer.temporada !== null && (
           <p>Cerveza de Temporada: {beer.temporada}</p>
         )}
