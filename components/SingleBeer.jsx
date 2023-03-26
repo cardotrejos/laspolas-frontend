@@ -10,13 +10,12 @@ const BrandStyles = styled.div`
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  max-width: var(--maxWidth);
   justify-content: center;
   align-items: top;
   gap: 2rem;
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: contain;
   }
 `;
@@ -59,7 +58,7 @@ export default function SingleBeer({ id }) {
 
       <div>
         <h2>{beer.name}</h2>
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "50%", height: "20%" }}>
           <Image
             src={beer.photo.image.publicUrlTransformed}
             alt={beer.photo.altText}
