@@ -9,14 +9,13 @@ import Link from "next/link";
 
 const BrandStyles = styled.div`
   display: grid;
-  grid-auto-columns: 1fr;
+  grid-auto-columns: 2fr;
   grid-auto-flow: column;
-  max-width: var(--maxWidth);
   justify-content: center;
   align-items: top;
   gap: 2rem;
   img {
-    width: 10%;
+    width: 90%;
     object-fit: contain;
   }
   h3 {
@@ -55,7 +54,7 @@ const BeerListStyles = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
   }
 `;
 
@@ -111,7 +110,7 @@ export default function SingleBrand({ id }) {
           width={100}
           height={100}
           style={{
-            maxWidth: "100%",
+            maxWidth: "30%",
             height: "auto"
           }} />
         <article>{brand.description}</article>
@@ -128,11 +127,11 @@ export default function SingleBrand({ id }) {
                 <Image
                   src={beer.photo.image.publicUrlTransformed}
                   alt={beer.photo.altText}
-                  width={150}
-                  height={150}
+                  width={100}
+                  height={100}
                   style={{
-                    maxWidth: "100%",
-                    height: "auto"
+                    maxWidth: "80%",
+                    height: "90%"
                   }} />
                 <h4>{beer.name}</h4>
               </div>

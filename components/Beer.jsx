@@ -11,10 +11,10 @@ function Beer({ beer }) {
         src={beer?.photo?.image?.publicUrlTransformed}
         alt={beer?.name}
         width={100}
-        height={200}
+        height={100}
         style={{
-          maxWidth: "100%",
-          height: "auto"
+          maxWidth: "50%",
+          height: "90%"
         }} />
       <Title>
         <Link href={`/cerveza/${beer?.id}`} legacyBehavior>{beer?.name}</Link>

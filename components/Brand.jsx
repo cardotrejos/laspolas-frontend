@@ -18,10 +18,10 @@ function Brand({ brand }) {
       <Image
         src={brand?.photo?.image?.publicUrlTransformed}
         alt={brand.name}
-        width={400}
-        height={400}
+        width={200}
+        height={200}
         style={{
-          maxWidth: "100%",
+          maxWidth: "90%",
           height: "auto"
         }} />
       <Title>
